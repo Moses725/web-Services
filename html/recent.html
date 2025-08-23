@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Recent Activities</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #1f1f1f, #a871be);
+      padding: 40px;
+      margin: 0;
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .activity-log {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      color: #333;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .activity-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-type {
+      font-weight: bold;
+      color: #6d3fb4;
+    }
+
+    .timestamp {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .content {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Recent Admin Activities</h2>
+  <div class="activity-log" id="activity-log">
+    <p>Loading activities...</p>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfuAPxTc9iduZB7_mZJZ7iLByaFETfZ9o",
+      authDomain: "ai-solutions-5372b.firebaseapp.com",
+      projectId: "ai-solutions-5372b",
+      storageBucket: "ai-solutions-5372b.appspot.com",
+      messagingSenderId: "383381500837",
+      appId: "1:383381500837:web:1a3a75525536c105f72e4c",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function fetchCollectionWithType(name, typeField, timestampField) {
+      const q = query(collection(db, name), orderBy(timestampField, "desc"));
+      const snapshot = await getDocs(q);
+      return snapshot.docs.map(doc => {
+        const data = doc.data();
+        const timestamp = data[timestampField]?.toDate?.().toLocaleString("en-GB", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        }) || "Unknown time";
+        return {
+          type: name,
+          timestamp,
+          ...data
+        };
+      });
+    }
+
+    async function loadActivities() {
+      const activityLog = document.getElementById("activity-log");
+
+      const [logData, deletionsData, responsesData] = await Promise.all([
+        fetchCollectionWithType("log", "action", "timestamp"),
+        fetchCollectionWithType("deletions", "deletedBy", "deletedAt"),
+        fetchCollectionWithType("responses", "respondedBy", "respondedAt")
+      ]);
+
+      const allActivities = [...logData, ...deletionsData, ...responsesData];
+
+      allActivities.sort((a, b) => {
+        return new Date(b.timestamp) - new Date(a.timestamp);
+      });
+
+      activityLog.innerHTML = "";
+
+      if (allActivities.length === 0) {
+        activityLog.innerHTML = "<p>No activity found.</p>";
+        return;
+      }
+
+      allActivities.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "activity-item";
+
+        const content = (() => {
+          switch (entry.type) {
+            case "log":
+              return `<span class="activity-type">LOGIN</span> - ${entry.email}`;
+            case "deletions":
+              return `<span class="activity-type">DELETION</span> - ${entry.fullName || "Unknown"} deleted by ${entry.deletedBy}`;
+            case "responses":
+              return `<span class="activity-type">RESPONSE</span> - Responded to ${entry.inquiryId} by ${entry.respondedBy}`;
+            default:
+              return `<span class="activity-type">UNKNOWN</span>`;
+          }
+        })();
+
+        div.innerHTML = `
+          <div class="timestamp">${entry.timestamp}</div>
+          <div class="content">${content}</div>
+        `;
+        activityLog.appendChild(div);
+      });
+    }
+
+    loadActivities();
+  </script>
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-SOLUTION</title>
+    <link rel="stylesheet" href="/css/index9.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+      <div class="logo">AI-SOLUTION</div>
+      <div class="nav-links">
+        <img
+          src="/images/nav.png"
+          alt="AI-Solution Logo"
+          style="
+            width: 430px;
+            height: 200px;
+            position: absolute;
+            z-index: -1;
+            margin-top: -120px;
+            left: -20px;
+          "
+        />
+        <a href="#home" class="active">Home</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <h1 class="cssanimation typing">Welcome to AI-Solution</h1>
+      <p>Leverage AI-powered solutions for unparalleled experience</p>
+      <a href="#contact">
+      <button>Get Started</button>
+      </a>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section class="about-us" id="about">
+      <h2>ABOUT US</h2>
+      <div class="about-content">
+        <!-- Left (Text) -->
+        <div class="about-text" style="padding: 30px;">
+          <h3>Driving AI Innovation</h3>
+          <p>
+            At AI-SOLUTION, we are pioneers in transforming businesses through intelligent, ethical, and scalable artificial intelligence. Founded in 2020, our mission is to bridge the gap between cutting-edge AI research and real-world enterprise challenges. From startups to Fortune 500 companies, we empower organizations to harness AI’s full potential—driving efficiency, innovation, and sustainable growth.
+          </p>
+          <p>
+            We believe AI should be a force for good. That’s why our solutions are built on three pillars: precision, transparency, and impact. Whether optimizing supply chains, securing digital ecosystems, or revolutionizing customer experiences, we deliver tailored AI strategies that turn complexity into clarity.
+          </p>
+
+          <!-- Stats -->
+          <div class="stats">
+            <div class="stat-box">
+              <h4>150+</h4>
+              <p>AI-Powered Transformations</p>
+            </div>
+            <div class="stat-box">
+              <h4>98%</h4>
+              <p>Client Retention Rate</p>
+            </div>
+            <div class="stat-box">
+              <h4>50K+</h4>
+              <p>Decisions Automated Daily</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right (Placeholder image) -->
+        <div class="about-image">
+          <!-- Replace this source with your actual image -->
+          <img src="/images/picas.png" alt="AI Sculpture Placeholder" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions section-->
+    <section id="solutions" class="solutions">
+      <h2>Our Services</h2>
+      <div class="slider-section">
+        <div class="content">
+          <h1 id="title">AI-Powered Virtual Assistant</h1>
+          <p id="description">
+            Streamline workflows and manage tasks with ease using our AI-driven
+            assistant.
+          </p>
+          <ul id="points">
+            <li>Saves time and boosts productivity.</li>
+            <li>Improves communication and task organisation.</li>
+            <li>Reduces reliance on IT support</li>
+            <li>Enhances user experience and satisfaction.</li>
+          </ul>
+        </div>
+
+        <div class="cards">
+          <div
+            class="card active"
+            style="
+              background: url('/images/VA2.png') no-repeat;
+              background-position: center;
+              background-size: cover;
+            "
+          ></div>
+          <div
+            class="card"
+            style="
+              background: url('/images/chip2.jpg') no-repeat;
+              background-position: center;
+              background-size: cover;
+            "
+          ></div>
+          <div
+            class="card"
+            style="
+              background: url('/images/robT.png') no-repeat;
+              background-position: center;
+              background-size: cover;
+            "
+          ></div>
+          <div
+            class="card"
+            style="
+              background: url('/images/robtH.png') no-repeat;
+              background-position: center;
+              background-size: cover;
+            "
+          ></div>
+          <div
+            class="card"
+            style="
+              background: url('/images/VA.jpg') no-repeat;
+              background-position: center;
+              background-size: cover;
+            "
+          ></div>
+        </div>
+
+        <div class="arrows">
+          <span class="arrow" id="prev">
+            <i class="fa-solid fa-angles-left"></i>
+          </span>
+          <span class="arrow" id="next">
+            <i class="fa-solid fa-angles-right"></i>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!--Testimonial Section-->
+    <section class="testimonials" id="feedback">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonial-grid" id="testimonial-container">
+        
+      </div>
+      <div style="text-align: center; margin-top: 30px;">
+          <button id="open-feedback-modal" class="feedback-btn">Leave a Review</button>
+      </div>
+      <!-- Feedback Modal -->
+       <div class="feedback-modal" id="feedback-modal">
+      <div class="feedback-modal-overlay" onclick="closeModal()"></div>
+      <div class="feedback-modal-content">
+      <span class="feedback-close-modal" onclick="closeModal()">&times;</span>
+      <h3>Leave Your Feedback</h3>
+      <form id="testimonial-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="text" id="company" placeholder="Company Name" required />
+      <input type="text" id="projectId" placeholder="Project ID" required />
+
+      <div class="star-rating">
+        <label>Rating:</label>
+        <div id="stars">
+           <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+        </div>
+      </div>
+      
+      <textarea id="review" placeholder="Your Review" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+    </section>
+
+    <!-- Article Section -->
+    <section class="featured-article" id="article">
+      <div class="featured-article-content">
+        <!-- Left: Image Placeholder -->
+        <div class="featured-article-image">
+          <img
+            src="/images/press.jpg"
+            alt="Featured Article"
+            class="article-placeholder"
+            style="
+              width: 600px;
+              height: fit-content;
+              border-radius: 1rem;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              object-fit: contain;
+            "
+          />
+        </div>
+
+        <div class="featured-article-text">
+          <h2 style="font-family:Orbitron;">Article of The Week</h2>
+          <h3>How Cutting-Edge Technologies Are Redefining Industries</h3>
+          <p>
+            The rapid evolution of artificial intelligence is reshaping the
+            global technological landscape, unlocking possibilities that once
+            seemed confined to science fiction. From healthcare to finance, AI
+            is transforming the way we live and work, driving innovation and
+            efficiency across industries...
+          </p>
+          <a href="#" class="btn read-more">Read Full Article &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!--Actual Article-->
+    <div class="article-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="container">
+          <header class="newspaper-header">
+            <div class="header-left">AI NEWS</div>
+            <div class="header-center">ai-solution &amp; Co.</div>
+            <div class="header-right">11/05/2025</div>
+          </header>
+
+          <section class="main-headline clearfix">
+            <img src="/images/innovation.jpg" alt="Top Interior" class="top-image" />
+            <h1>The Next Frontier in AI Innovation</h1>
+            <p class="sub-headline">
+              How Cutting-Edge Technologies Are Redefining Industries
+            </p>
+            <p>
+              The rapid evolution of artificial intelligence is reshaping the
+              global technological landscape, unlocking possibilities that once
+              seemed confined to science fiction. From generative AI crafting
+              human-like content to autonomous systems revolutionizing
+              logistics, the pace of innovation is accelerating—and businesses
+              that fail to adapt risk obsolescence. At AI-SOLUTION, we’re at the
+              forefront of this revolution, empowering organizations to harness
+              emerging AI technologies that drive disruption, efficiency, and
+              competitive advantage.
+            </p>
+          </section>
+
+          <section class="article-content">
+            <div class="left-column">
+              <div class="image-block">
+                <img src="/images/generative_ai.jpg" alt="Interior 1" />
+              </div>
+              <p>
+                <h3>Generative AI</h3> Beyond Hype to Hyper-Personalization
+                Generative AI, powered by models like GPT-4 and Stable
+                Diffusion, is transforming creativity and customer engagement.
+                Unlike traditional AI, which analyzes data, generative systems
+                create data—text, images, code, and even synthetic media.
+                Applications include: Content Creation: Automate marketing copy,
+                product descriptions, and social media posts while maintaining
+                brand voice. Design & Prototyping: Generate 3D models, logos, or
+                architectural blueprints in minutes. Hyper-Personalization:
+                Craft individualized customer experiences at scale, from
+                tailored emails to dynamic pricing offers.
+              </p>
+
+              <div class="image-block">
+                <img src="/images/edge.jpg" alt="Interior 2" />
+              </div>
+              <p>
+                <h3>Edge AI</h3>Intelligence at the Speed of Need Edge AI brings
+                processing power directly to devices (e.g., sensors, cameras,
+                IoT systems), enabling real-time decision-making without relying
+                on cloud infrastructure. This is critical for industries where
+                latency is unacceptable: Manufacturing: Detect equipment
+                anomalies on the factory floor to prevent downtime. Healthcare:
+                Analyze medical imaging in real-time during surgeries.
+                Autonomous Vehicles: Process terabytes of sensor data locally
+                for split-second navigation. AI-SOLUTION Edge: Our lightweight
+                AI models optimize performance for edge devices, ensuring speed,
+                accuracy, and minimal energy consumption.
+              </p>
+            </div>
+            <div class="right-column">
+              <p>
+               <h3>Ethical AI: Building Trust in a Black Box World</h3>
+                As AI permeates critical systems, transparency and fairness are non-negotiable. AI-SOLUTION prioritizes ethical frameworks that address:
+
+                Bias Mitigation: Auditing datasets and algorithms to ensure equitable outcomes.
+
+                Explainability: Providing clear insights into how AI models make decisions.
+
+                Regulatory Compliance: Aligning with GDPR, AI Act, and industry-specific standards.
+
+                Our Approach: We embed ethical guardrails into every solution, from healthcare diagnostics to financial risk assessments.
+              </p>
+
+              <div class="image-block">
+                <img src="/images/ethics.jpg" alt="Interior 3" />
+              </div>
+              <p>
+                <h3>AI in Cybersecurity: The Digital Shield</h3>
+                As cyberthreats grow more sophisticated, AI is becoming the first line of defense. Machine learning algorithms analyze network traffic, detect anomalies, and predict attacks before they occur. Key use cases:
+
+                Behavioral Biometrics: Authenticate users based on typing patterns or mouse movements.
+
+                Threat Hunting: Identify zero-day vulnerabilities by correlating global threat data.
+
+                Automated Incident Response: Neutralize breaches in milliseconds.
+
+                AI-SOLUTION Security Suite: Our clients report a 60% reduction in breach response times and a 90% improvement in threat detection accuracy.
+              </p>
+              <div class="image-block">
+                <img src="/images/security.jpg" alt="Interior 2" />
+              </div>
+              <p>
+                <h3>Conclusion: Lead the AI Revolution with AI-SOLUTION</h3>
+                The technological leaps in AI are not just incremental—they’re exponential. To stay ahead, businesses need a partner who understands both the technology and the terrain. At AI-SOLUTION, we blend technical mastery with industry-specific expertise to deliver AI solutions that are as pragmatic as they are revolutionary.
+
+                Ready to Transform Tomorrow?
+                Explore our AI labs, review case studies, or schedule a demo today at [ai-solution.com/innovation]. Let’s pioneer the future—together.
+              </p>
+            </div>
+            
+          </section>
+
+          <section class="bottom-link">
+            <p>www.ai-solution.com</p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+      <h2 style="font-family:Orbitron;">Our Work in Action</h2>
+      <div class="gallery-container">
+        <div class="gallery-label">Gallery</div>
+        <div class="grid">
+          <div class="grid-sizer"></div>
+
+          <div class="grid-item item-large">
+            <img src="/images/factory.jpg" alt="" />
+            <div class="caption">
+              <h4> AI-Powered Manufacturing</h4>
+              <p> Reducing downtime by 45% with predictive maintenance AI.</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <img src="/images/analytics.jpg" alt="" />
+            <div class="caption">
+              <h4>Smart Desk</h4>
+              <p> Deployed AI models to analyze developer productivity, code quality, and sprint outcomes in real-time.</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <img src="/images/ana2.jpg" alt="" />
+            <div class="caption">
+              <h4>Data Hub</h4>
+              <p>Centralised analytics dashboard.</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <img src="/images/roboA.png" alt="" />
+            <div class="caption">
+              <h4>Robo‑Arm</h4>
+              <p>Precision handling in assembly lines.</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <img src="/images/security2.jpg" alt="" />
+            <div class="caption">
+              <h4>Security AI</h4>
+              <p>Threat detection & alerting.</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <img src="/images/logistics.png" alt="" />
+            <div class="caption">
+              <h4>Logistics Bot</h4>
+              <p>Autonomous package sorting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+      <div class="container">
+        <!-- Section Title -->
+        <h2 style="font-family:Orbitron;">Upcoming Events</h2>
+        <p class="events-intro">
+          Join us at our upcoming AI and tech events to explore innovation,
+          network with pioneers, and unlock new possibilities.
+        </p>
+
+        <!-- Events Grid -->
+        <div class="events-grid">
+          <div class="event-card">
+            <h4>May 5 - 7, 2025</h4>
+            <div class="event-circle2" ></div>
+            <h5>Generative AI Expo</h5>
+            <p>Sands Expo, Singapore</p>
+          </div>
+          <div class="event-card">
+            <h4>July 20 - 22, 2025</h4>
+            <div class="event-circle"></div>
+            <h5>AI Innovation Summit 2025</h5>
+            <p>Moscone Center, San Francisco, CA</p>
+          </div>
+          <div class="event-card">
+            <h4>June 10, 2025</h4>
+            <div class="event-circle"></div>
+            <h5>AI-Driven Healthcare Workshop</h5>
+            <p>Marriott Marquis, New York, NY</p>
+          </div>
+          <div class="event-card">
+            <h4>September 15, 2025</h4>
+            <div class="event-circle"></div>
+            <h5>Future of Work Symposium</h5>
+            <p>Berlin Congress Center, Berlin, Germany</p>
+          </div>
+        </div>
+
+        <!-- Subscribe CTA -->
+        <div class="subscribe-section">
+          <p>
+            Subscribe to receive the latest event updates, articles, and insider
+            news every week.
+          </p>
+          <form class="subscribe-form" method="post">
+            <input
+              type="email"
+              id="subscriber-email"
+              placeholder="example@gmail.com"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Subscribe Modal -->
+      <div id="subscribe-modal" class="modal">
+        <div class="modal-content">
+          <h3>Select Events to Subscribe</h3>
+          <form id="subscribe-form">
+            <div>
+              <label
+                ><input
+                  type="checkbox"
+                  name="events"
+                  value="Generative AI Expo"
+                  disabled 
+                />
+                Generative AI Expo</label
+              >
+              <span style="color: rgba(105, 2, 2, 0.457); font-size: 0.9em; font-style: italic;">(Currently unavailable)</span>
+            </div>
+            <div>
+              <label
+                ><input
+                  type="checkbox"
+                  name="events"
+                  value="AI Innovation Summit 2025"
+                />
+                AI Innovation Summit 2025</label
+              >
+            </div>
+            <div>
+              <label
+                ><input
+                  type="checkbox"
+                  name="events"
+                  value="AI-Driven Healthcare Workshop"
+                />
+                AI-Driven Healthcare Workshop</label
+              >
+            </div>
+            <div>
+              <label
+                ><input
+                  type="checkbox"
+                  name="events"
+                  value="Future of Work Symposium"
+                />
+                Future of Work Symposium</label
+              >
+            </div>
+            <button type="submit">Confirm Subscription</button>
+            <button type="button" onclick="closeModal()">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contact">
+      <div class="contact-info">
+        <h1 style="font-family:Orbitron;">CONTACT US</h1>
+        <p>get in touch with us </p>
+        <div class="info-item">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+            />
+          </svg>
+          Address: 123 sunderland
+        </div>
+        <div class="info-item">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.06-.24c1.12.37 2.33.57 3.53.57a1 1 0 011 1v3.5a1 1 0 01-1 1C9.27 21 3 14.73 3 6.5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.2.2 2.41.57 3.53a1 1 0 01-.24 1.06l-2.2 2.2z"
+            />
+          </svg>
+          Phone: +1 234 567 890
+        </div>
+        <div class="info-item">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.12l7.38 5.88a1 1 0 001.24 0L20 8.12V18H4z"
+            />
+          </svg>
+          Email: helpdesk@aisolutions.com
+        </div>
+        <img
+          src="/images/map.png"
+          alt="Map"
+          class="map"
+        />
+      </div>
+
+      <form class="contact-form">
+        <div style="display: flex; gap: 10px">
+          <input type="text" placeholder="full name"  required/>
+          <input type="text" placeholder="+44 123 456 789" required/>
+        </div>
+        <input type="email" placeholder="example@gmail.com" required/>
+        <input type="text" placeholder="company name" required/>
+        <input type="text" placeholder="country" required/>
+        <input type="text" placeholder="job title" required/>
+        <textarea placeholder="about....." required></textarea>
+        <div
+          class="g-recaptcha"
+          data-sitekey="6Lf26xwrAAAAAJyJdr5ohnJgdp8VIm2mLsqzFRWd"
+        ></div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </footer>
+
+    <section class="footer-bottom">
+      <div class="social-media">
+        <a href="https://www.facebook.com/AI-SOLUTION" target="_blank"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+        <a href="https://twitter.com/AI-SOLUTION" target="_blank"
+          ><i class="fa-brands fa-twitter"></i
+        ></a>
+        <a href="https://www.linkedin.com/company/ai-solution" target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com/AI-SOLUTION" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="https://www.youtube.com/@AI-SOLUTION" target="_blank"
+          ><i class="fa-brands fa-youtube"></i >
+      </a>
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 AI-SOLUTION. All rights reserved.</p>
+        <p>Privacy Policy | Terms of <a href="/html/login.html">Service</a></p>
+    </section>
+
+    <!-- JavaScript-->
+    <script src="/js/navbar.js"></script>
+    <script src="/js/solutions.js"></script>
+    <script type="module" src="/js/testimonials.js"></script>
+    <script src="/js/testimonial.js"></script>
+    <script src="/js/feedback.js" type="module"></script>
+    <script src="/js/article.js"></script>
+    <script src="/js/gallery.js"></script>
+    <script src="/js/footer.js"></script>
+
+    <script type="module" src="/js/events.js"></script>
+    <!--firebase Contact Us-->
+    <script type="module" src="/js/fbContact.js"></script>
+
+    <!--firebase visit per section-->
+    <script type="module" src="/js/fbVPS.js"></script>
+  </body>
+</html>

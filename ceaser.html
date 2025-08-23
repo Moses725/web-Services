@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Caesar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #ae7cf4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .container {
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        -webkit-backdrop-filter: blur(50%);
+        backdrop-filter: blur(50%);
+        border: 3px solid rgba(255, 255, 255, 0.18);
+        border-radius: 10px;
+
+      }
+
+      h2 {
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 48%;
+        border: none;
+        background-color: #0a0a0a;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      button:hover {
+        background-color: #fa5353;
+        color: #f1f1f1;
+      }
+
+      .output {
+        margin-top: 20px;
+      }
+
+      .button-row {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Caesar Cipher</h2>
+
+      <label for="message">Message:</label>
+      <textarea id="message" rows="4"></textarea>
+
+      <label for="shift">Shift Value:</label>
+      <input type="number" id="shift" value="3" />
+
+      <div class="button-row">
+        <button onclick="encrypt()">Encrypt</button>
+        <button onclick="decrypt()">Decrypt</button>
+      </div>
+
+      <div class="output">
+        <h4>Result:</h4>
+        <textarea id="result" rows="4" readonly></textarea>
+      </div>
+    </div>
+
+    <script>
+      function caesarEncrypt(text, shift) {
+        let result = "";
+
+        for (let i = 0; i < text.length; i++) {
+          let char = text[i];
+          let code = text.charCodeAt(i);
+
+          if (char.match(/[a-z]/i)) {
+            if (code >= 65 && code <= 90) {
+              char = String.fromCharCode(
+                ((((code - 65 + shift) % 26) + 26) % 26) + 65
+              );
+            } else if (code >= 97 && code <= 122) {
+              char = String.fromCharCode(
+                ((((code - 97 + shift) % 26) + 26) % 26) + 97
+              );
+            }
+          }
+
+          result += char;
+        }
+
+        return result;
+      }
+
+      function encrypt() {
+        const message = document.getElementById("message").value;
+        const shift = parseInt(document.getElementById("shift").value);
+        const result = caesarEncrypt(message, shift);
+        document.getElementById("result").value = result;
+      }
+
+      function decrypt() {
+        const message = document.getElementById("message").value;
+        const shift = parseInt(document.getElementById("shift").value);
+        const result = caesarEncrypt(message, -shift);
+        document.getElementById("result").value = result;
+      }
+    </script>
+  </body>
+</html>
