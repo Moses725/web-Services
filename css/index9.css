@@ -13,20 +13,32 @@ body {
   background: #000;
 }
 
-/* Sticky Navigation Bar */
+/* Dynamic Island Glass Navbar */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 2rem;
-  background: transparent;
-  color: #000;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  max-width: 900px;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #fff;
   z-index: 9999;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.navbar:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(168, 113, 190, 0.3);
 }
 
 .navbar a.active {
@@ -36,27 +48,27 @@ body {
 }
 
 .logo {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
   z-index: 2;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 10px rgba(168, 113, 190, 0.5);
 }
 
 /* Hamburger button */
 .hamburger {
   display: none;
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  z-index: 10;
   background: transparent !important;
   border: none !important;
   outline: none !important;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
   box-shadow: none !important;
 }
 
@@ -67,16 +79,17 @@ body {
 
 .hamburger span {
   display: block;
-  width: 25px;
-  height: 3px;
-  background: #010101;
-  margin: 5px 0;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  margin: 4px 0;
   transition: all 0.3s ease;
   border-radius: 2px;
+  box-shadow: 0 0 6px rgba(168, 113, 190, 0.4);
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 6px);
+  transform: rotate(45deg) translate(4px, 4px);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -84,18 +97,7 @@ body {
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -6px);
-}
-
-.nav-bg-img {
-  width: 430px;
-  height: 200px;
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+  transform: rotate(-45deg) translate(4px, -4px);
 }
 
 /* Center navigation links by using absolute positioning */
@@ -111,11 +113,13 @@ body {
 }
 
 .nav-links a {
-  color: #010101;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   margin-left: 1rem;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.25rem 0;
 }
 
 .nav-links a:first-child {
@@ -123,7 +127,27 @@ body {
 }
 
 .nav-links a:hover {
-  color: #ccc;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(168, 113, 190, 0.6);
+}
+
+.navbar a.active {
+  color: #c77dff;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(199, 125, 255, 0.8), 0 0 20px rgba(199, 125, 255, 0.4);
+  border-bottom: none;
+}
+
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #c77dff, #a871be);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(199, 125, 255, 0.6);
 }
 
 /* Hero Section with Smooth Vertical Gradient Background */
@@ -1367,10 +1391,10 @@ body {
 /* Tablet screens (768px and below) */
 @media (max-width: 768px) {
   .navbar {
-    padding: 0.75rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    top: 12px;
+    width: 90%;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
   }
 
   .hamburger {
@@ -1385,6 +1409,7 @@ body {
     max-width: 300px;
     height: 100vh;
     background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1394,6 +1419,7 @@ body {
     transition: right 0.3s ease;
     z-index: 9998;
     padding: 2rem;
+    border-radius: 0;
   }
 
   .nav-links.active {
@@ -1407,12 +1433,25 @@ body {
   .nav-links a {
     margin: 1rem 0;
     font-size: 1.3rem;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(168, 113, 190, 0.6);
+  }
+
+  .navbar a.active {
+    color: #c77dff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(199, 125, 255, 0.8), 0 0 20px rgba(199, 125, 255, 0.4);
+    border-bottom: none;
   }
 
   .logo {
     text-align: left;
+    font-size: 0.95rem;
   }
 
   .hero {
