@@ -664,7 +664,7 @@ body {
 .modal-content {
   position: relative;
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 5rem auto 2rem;
   background: white;
   padding: 2rem;
   border-radius: 5px;
@@ -673,12 +673,27 @@ body {
   overflow-y: auto;
 }
 .close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
+  position: fixed;
+  top: calc(20px + 60px);
+  right: 1.5rem;
+  font-size: 2.5rem;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 10001;
+  color: #333;
+  background: rgba(255, 255, 255, 0.9);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+  background: #fff;
+  transform: scale(1.1);
 }
 
 .modal-content .container {
@@ -1636,12 +1651,21 @@ body {
   }
 
   .modal-content {
-    margin: 1rem;
+    margin: 6rem 0.5rem 1rem;
     padding: 1.5rem;
+    max-height: 85vh;
   }
 
   .modal-content .container {
     padding: 1rem;
+  }
+
+  .close-modal {
+    top: calc(12px + 50px);
+    right: 1rem;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
   }
 
   .newspaper-header {

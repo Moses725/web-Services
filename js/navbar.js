@@ -5,10 +5,10 @@ const navList = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("section[id]");
 
 function setActiveLink() {
-  let scrollPos = window.scrollY + 150;
+  let scrollPos = window.scrollY + window.innerHeight / 3;
 
   sections.forEach((sec) => {
-    let offset = sec.offsetTop - 100;
+    let offset = sec.offsetTop;
     let height = sec.offsetHeight;
     let id = sec.getAttribute("id");
 
