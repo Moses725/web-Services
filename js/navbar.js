@@ -1,22 +1,36 @@
-let lastScrollY = window.scrollY;
 const navbar = document.getElementById("navbar");
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
+const navList = document.querySelectorAll(".nav-links a");
+const sections = document.querySelectorAll("section[id]");
+
+function setActiveLink() {
+  let scrollPos = window.scrollY + 150;
+
+  sections.forEach((sec) => {
+    let offset = sec.offsetTop - 100;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute("id");
+
+    if (scrollPos >= offset && scrollPos < offset + height) {
+      navList.forEach((a) => {
+        a.classList.remove("active");
+        if (a.getAttribute("href") === "#" + id) {
+          a.classList.add("active");
+        }
+      });
+    }
+  });
+}
 
 window.addEventListener("scroll", () => {
-  const currentScrollY = window.scrollY;
-  
   // Close hamburger menu on scroll
   if (navLinks.classList.contains("active")) {
     hamburger.classList.remove("active");
     navLinks.classList.remove("active");
   }
-  
-  // Keep navbar visible at all times
-  navbar.style.transform = "translateY(0)";
-  navbar.style.opacity = "1";
-  
-  lastScrollY = currentScrollY;
+
+  setActiveLink();
 });
 
 if (hamburger) {
@@ -26,30 +40,23 @@ if (hamburger) {
   });
 }
 
-document.querySelectorAll(".nav-links a").forEach((link) => {
+navList.forEach((link) => {
   link.addEventListener("click", () => {
     hamburger.classList.remove("active");
     navLinks.classList.remove("active");
   });
 });
 
-let navList = document.querySelectorAll("nav .nav-links a");
-let sections = document.querySelectorAll("section");
+// Close menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (
+    navLinks.classList.contains("active") &&
+    !navLinks.contains(e.target) &&
+    !hamburger.contains(e.target)
+  ) {
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+  }
+});
 
-window.onscroll = () => {
-  sections.forEach((sec) => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop;
-    let height = sec.offsetHeight;
-    let id = sec.getAttribute("id");
-
-    if (top >= offset && top < offset + height) {
-      navList.forEach((a) => {
-        a.classList.remove("active");
-      });
-      document
-        .querySelector("nav .nav-links a[href*=" + id + "]")
-        .classList.add("active");
-    }
-  });
-};
+setActiveLink();
