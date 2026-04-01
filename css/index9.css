@@ -1292,7 +1292,7 @@ body {
     flex-direction: column;
     height: auto;
     min-height: auto;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
   }
 
   .content {
@@ -1466,11 +1466,6 @@ body {
     font-size: 0.85rem;
   }
 
-  .slider-section {
-    height: auto;
-    min-height: auto;
-  }
-
   .content {
     padding: 20px 15px;
   }
@@ -1583,6 +1578,10 @@ body {
   .contact-form textarea {
     padding: 10px;
     font-size: 14px;
+  }
+
+  .contact-form textarea {
+    height: 100px;
   }
 
   .submit-btn {
@@ -1988,38 +1987,13 @@ body {
     font-size: 1.3rem;
   }
 
-  .slider-section {
-    height: auto;
-    min-height: auto;
-    padding: 1rem 0.5rem;
-  }
-
-  .cards {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    position: static;
-    min-height: auto;
-    align-items: center;
+  .content h1 {
+    font-size: 1.3rem;
   }
 
   .card {
-    position: relative;
-    opacity: 1;
-    transform: none;
-    width: 100%;
-    max-width: 250px;
-    margin: 0 auto;
-    height: 180px;
-    display: flex;
-  }
-
-  .arrows {
-    display: none;
-  }
-
-  .content h1 {
-    font-size: 1.2rem;
+    width: 180px;
+    height: 250px;
   }
 
   .contact-info h1 {

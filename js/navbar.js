@@ -1,18 +1,36 @@
 let lastScrollY = window.scrollY;
 const navbar = document.getElementById("navbar");
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
 
 window.addEventListener("scroll", () => {
   const currentScrollY = window.scrollY;
-  if (currentScrollY > lastScrollY) {
-    // Scrolling down - hide nav
-    navbar.style.transform = "translateY(-100%)";
-    navbar.style.opacity = "0";
-  } else {
-    // Scrolling up - show nav
-    navbar.style.transform = "translateY(0)";
-    navbar.style.opacity = "1";
+  
+  // Close hamburger menu on scroll
+  if (navLinks.classList.contains("active")) {
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
   }
+  
+  // Keep navbar visible at all times
+  navbar.style.transform = "translateY(0)";
+  navbar.style.opacity = "1";
+  
   lastScrollY = currentScrollY;
+});
+
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+  });
+}
+
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+  });
 });
 
 let navList = document.querySelectorAll("nav .nav-links a");
